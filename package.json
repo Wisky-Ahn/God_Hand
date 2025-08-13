@@ -1,0 +1,82 @@
+{
+  "name": "godhand-discord-bot",
+  "version": "1.0.0",
+  "description": "🎯 GodHand Discord Bot - 음성 활동 중심의 순위 시스템과 음악 재생 기능을 제공하는 종합 관리 봇",
+  "main": "src/bot/index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node src/bot/index.js",
+    "dev": "nodemon src/bot/index.js",
+    "deploy": "node src/bot/deploy-commands.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "db:migrate": "node src/services/database/migration.js",
+    "db:seed": "node database/seeds/index.js",
+    "pm2:deploy": "node scripts/deploy.js",
+    "pm2:start": "pm2 start ecosystem.config.js --env production",
+    "pm2:stop": "pm2 stop godhand-bot",
+    "pm2:restart": "pm2 restart godhand-bot",
+    "pm2:delete": "pm2 delete godhand-bot",
+    "pm2:status": "node scripts/pm2-utils.js status",
+    "pm2:logs": "pm2 logs godhand-bot",
+    "pm2:monitor": "node scripts/pm2-utils.js monitor",
+    "pm2:save": "pm2 save",
+    "backup": "node scripts/deploy.js --backup-only",
+    "backup:manual": "node scripts/backup-manager.js backup manual",
+    "backup:daily": "node scripts/backup-manager.js backup daily",
+    "backup:list": "node scripts/backup-manager.js list",
+    "backup:cleanup": "node scripts/backup-manager.js cleanup",
+    "backup:schedule": "node scripts/backup-manager.js schedule",
+    "restore": "node scripts/backup-manager.js restore",
+    "deploy:enhanced": "node scripts/deploy-enhanced.js",
+    "deploy:rollback": "node scripts/deploy-enhanced.js --rollback",
+    "deploy:dry-run": "node scripts/deploy-enhanced.js --dry-run",
+    "deploy:cli": "node scripts/deployment-cli.js",
+    "verify": "node scripts/deploy.js --verify",
+    "test:integration": "node test/integration/integration-test.js",
+    "test:performance": "node test/performance/performance-benchmark.js",
+    "test:music": "echo '🎵 음악 시스템 테스트 실행...' && node test/music/youtube_api_test.js",
+    "test:audio": "echo '🎤 오디오 시스템 테스트 실행...' && node test/audio/test_discord_voice.js",
+    "test:music:youtube": "node test/music/test_youtube_api.js",
+    "test:music:integrated": "node test/music/integrated_test.js",
+    "test:all": "npm run test:integration && npm run test:performance && npm run test:music && npm run test:audio",
+    "check:production": "node test/integration/production-readiness.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "music",
+    "ranking",
+    "voice-activity",
+    "discord.js",
+    "postgresql"
+  ],
+  "author": "GodHand Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@discordjs/opus": "^0.10.0",
+    "@discordjs/voice": "^0.16.1",
+    "canvas": "^3.1.2",
+    "discord.js": "^14.21.0",
+    "dotenv": "^16.6.1",
+    "ffmpeg-static": "^5.2.0",
+    "libsodium-wrappers": "^0.7.15",
+    "node-cron": "^3.0.3",
+    "opusscript": "^0.0.8",
+    "pg": "^8.16.3",
+    "sodium-native": "^5.0.6",
+    "tweetnacl": "^1.0.3",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/server-postgres": "^0.6.2",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.10"
+  }
+}
