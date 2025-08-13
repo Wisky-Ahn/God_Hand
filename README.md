@@ -445,7 +445,7 @@ npm run deploy:dry-run
 
 ## 👥 개발팀
 
-- **GodHand Team** - *Initial work*
+- **Wisky_Ahn(안현준)** - *Initial work*
 
 ## 📞 지원
 
